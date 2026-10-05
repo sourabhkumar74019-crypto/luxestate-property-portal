@@ -1,0 +1,115 @@
+/* Custom CSS Variables for Theme Engine */
+:root {
+  --bg-primary: #030712;
+  --bg-card: rgba(17, 24, 39, 0.85);
+  --header-bg: rgba(3, 7, 18, 0.85);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --input-bg: #1f2937;
+  --text-brand: #f9fafb;
+  --text-sub: #9ca3af;
+}
+
+html.light {
+  --bg-primary: #f8fafc;
+  --bg-card: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --border-color: #e2e8f0;
+  --input-bg: #f1f5f9;
+  --text-brand: #0f172a;
+  --text-sub: #64748b;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-brand);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-glass {
+  background-color: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: var(--border-color);
+}
+
+.card-bg {
+  background-color: var(--bg-card);
+  backdrop-filter: blur(12px);
+}
+
+.card-border {
+  border-color: var(--border-color);
+}
+
+.text-brand {
+  color: var(--text-brand);
+}
+
+.text-sub {
+  color: var(--text-sub);
+}
+
+.input-field {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-brand);
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.hero-banner {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(3, 7, 18, 0.95) 100%), 
+              url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+
+.theme-toggle-btn {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+  color: var(--text-brand);
+}
+
+.nav-link {
+  color: var(--text-sub);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #f59e0b;
+}
+
+.layout-btn {
+  color: var(--text-sub);
+}
+
+.layout-btn.active {
+  background-color: #f59e0b;
+  color: #020617;
+}
+
+/* Property Card Hover Effects */
+.property-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
