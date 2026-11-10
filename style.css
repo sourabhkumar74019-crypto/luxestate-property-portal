@@ -1,0 +1,148 @@
+/* LuxEstate theme: Emerald and champagne
+   Dark  = deep emerald, champagne text, gold accent
+   Light = ivory, champagne surfaces, bronze accent
+   Tailwind colors amber-300/400/500 and slate-700/800/900 are mapped to these
+   variables in index.html, so every existing class follows the theme. */
+:root {
+  --bg-primary: #0A241F;
+  --bg-card: rgba(19, 69, 59, 0.85);
+  --header-bg: rgba(10, 36, 31, 0.9);
+  --border-color: rgba(241, 228, 195, 0.14);
+  --input-bg: #0F332B;
+  --text-brand: #FAF6EA;
+  --text-sub: #A9BDB4;
+
+  --accent-rgb: 201 162 75;
+  --accent-hover-rgb: 216 181 99;
+  --accent-text-rgb: 216 181 99;
+  --gold-soft-rgb: 241 228 195;
+  --s700-rgb: 31 90 77;
+  --s800-rgb: 19 69 59;
+  --s900-rgb: 15 51 43;
+}
+
+html.light {
+  --bg-primary: #FAF6EA;
+  --bg-card: #FFFDF6;
+  --header-bg: rgba(250, 246, 234, 0.92);
+  --border-color: rgba(10, 36, 31, 0.12);
+  --input-bg: #F1E4C3;
+  --text-brand: #0A241F;
+  --text-sub: #5B6F68;
+
+  --accent-rgb: 184 146 74;
+  --accent-hover-rgb: 201 162 75;
+  --accent-text-rgb: 140 106 31;
+  --gold-soft-rgb: 232 217 168;
+  --s700-rgb: 232 217 175;
+  --s800-rgb: 241 228 195;
+  --s900-rgb: 241 228 195;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-brand);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Gold text stays readable on both themes (bronze on light) */
+html .text-amber-400,
+html .text-amber-500 { color: rgb(var(--accent-text-rgb)); }
+
+/* Row dividers in the Manage table follow the theme */
+.divide-y > :not([hidden]) ~ :not([hidden]) { border-color: var(--border-color); }
+
+.header-glass {
+  background-color: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: var(--border-color);
+}
+
+.card-bg {
+  background-color: var(--bg-card);
+  backdrop-filter: blur(12px);
+}
+
+.card-border { border-color: var(--border-color); }
+.text-brand { color: var(--text-brand); }
+.text-sub { color: var(--text-sub); }
+
+.input-field {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-brand);
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: rgb(var(--accent-rgb));
+  box-shadow: 0 0 0 3px rgb(var(--accent-rgb) / 0.22);
+}
+
+/* Hero: dark overlay on dark theme, light overlay on light theme so text always reads */
+.hero-banner {
+  background:
+    linear-gradient(90deg, rgba(10, 36, 31, 0.95) 0%, rgba(10, 36, 31, 0.82) 55%, rgba(10, 36, 31, 0.6) 100%),
+    url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+}
+html.light .hero-banner {
+  background:
+    linear-gradient(90deg, rgba(250, 246, 234, 0.96) 0%, rgba(250, 246, 234, 0.86) 55%, rgba(250, 246, 234, 0.6) 100%),
+    url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+
+.theme-toggle-btn {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+  color: var(--text-brand);
+}
+
+.nav-link { color: var(--text-sub); transition: color 0.2s ease; }
+.nav-link:hover, .nav-link.active { color: rgb(var(--accent-text-rgb)); }
+
+.layout-btn { color: var(--text-sub); }
+.layout-btn.active { background-color: rgb(var(--accent-rgb)); color: #0A241F; }
+
+.property-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.property-card:hover {
+  transform: translateY(-6px);
+  border-color: rgb(var(--accent-rgb));
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: #1F5A4D; border-radius: 4px; }
+html.light ::-webkit-scrollbar-thumb { background: #D8C896; }
+
+:focus-visible { outline: 2px solid rgb(var(--accent-rgb)); outline-offset: 2px; }
+
+.mobile-nav {
+  background: var(--header-bg);
+  border-color: var(--border-color);
+  backdrop-filter: blur(16px);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.mnav {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 10px 0; font-size: 10px; font-weight: 700; color: var(--text-sub);
+}
+.mnav.active { color: rgb(var(--accent-text-rgb)); }
+
+.img-fallback { background: linear-gradient(135deg, #13453B, #1F5A4D); }
+.card-img { cursor: pointer; transition: transform .5s ease; }
+.property-card:hover .card-img { transform: scale(1.05); }
+
+/* Manage table: scrolls sideways on phones instead of squeezing */
+#tab-client-hub table { min-width: 760px; }
+#tab-client-hub td { vertical-align: middle; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
